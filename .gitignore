@@ -1,0 +1,5 @@
+/node_modules
+
+# reporting
+/allure-report
+/allure-results

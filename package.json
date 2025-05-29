@@ -1,0 +1,57 @@
+{
+  "name": "cypress-ultimate-architecture",
+  "version": "1.0.0",
+  "description": "A complete, scalable Cypress testing framework showcasing best practices with Page Object Model, reusable element wrappers, step definitions, Allure reporting, ESLint + Prettier integration, Husky pre-commit hooks, environment configs, and clean CI-ready structure.",
+  "scripts": {
+    "prepare": "husky",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --ext .js --fix",
+    "format": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/cypress-ultimate-architecture.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@cypress/grep": "^4.1.0",
+    "allure-cypress": "^3.2.1",
+    "cypress": "^14.3.3",
+    "cypress-real-events": "^1.14.0",
+    "dayjs": "^1.11.13",
+    "dotenv": "^16.5.0",
+    "eslint": "^9.27.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-cypress": "^4.3.0",
+    "eslint-plugin-prettier": "^5.4.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.0.0",
+    "prettier": "^3.5.3"
+  },
+  "keywords": [
+    "cypress",
+    "testing",
+    "automation",
+    "e2e",
+    "end-to-end",
+    "eslint",
+    "prettier",
+    "husky",
+    "page-object-model",
+    "pom",
+    "test-automation",
+    "qa",
+    "ci-cd",
+    "allure",
+    "javascript-testing",
+    "cypress-framework",
+    "test-architecture",
+    "cypress-best-practices"
+  ],
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}

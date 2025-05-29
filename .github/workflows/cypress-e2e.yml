@@ -1,0 +1,91 @@
+# GitHub Actions workflow runs Cypress end-to-end tests using a Docker container
+# It also generates and publishes an Allure test report to GitHub Pages (gh-pages branch)
+
+# ✅ NOTE: GitHub Pages reports are only publicly accessible if:
+#    - The repository is public
+#    - OR the repository is part of a GitHub Enterprise instance with Pages enabled
+
+name: Cypress E2E Tests
+
+on:
+  # Allow this workflow to be manually triggered from the GitHub UI
+  workflow_dispatch:
+    # This input defines the test environment to run against
+    # It's shown as a dropdown when triggering the workflow manually
+    # You can define multiple environments, such as "env1" or "env2", to simulate different configs
+    inputs:
+      env:
+        description: 'Environment to run tests against'
+        required: true
+        default: 'env1'
+        type: choice
+        options:
+          - env1
+          - env2
+
+      # This input allows you to filter which Cypress tests will run by tag
+      # Examples:
+      #   @smoke+@login → runs tests tagged with both
+      #   -@calendar → excludes tests tagged @calendar
+      tags:
+        description: 'Cypress tags to run (e.g. @smoke+@login or -@calendar)'
+        required: false
+        default: ''
+
+permissions:
+  # Required permissions for publishing the Allure report to GitHub Pages
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  e2e:
+    # The job runs on the latest Ubuntu environment provided by GitHub
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the project code from the repository
+      # This is a standard step in almost all GitHub workflows
+      # It pulls the source code from your repo so that the workflow can access test files, configs, and code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Build the Docker image for Cypress and Allure
+      # This uses the Dockerfile in the root of the project
+      - name: Build Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: Dockerfile
+          tags: cypress-allure:ci
+
+      # Step 3: Run Cypress tests inside the built Docker container
+      # It passes environment variables and mounts the Allure report directory
+      - name: Run Cypress tests inside Docker
+        run: |
+          echo "Running Cypress on env: ${{ github.event.inputs.env }}"
+          docker run --rm \
+            -e CYPRESS_envName="${{ github.event.inputs.env }}" \
+            -e CYPRESS_grepTags="${{ github.event.inputs.tags }}" \
+            -e CYPRESS_ENV1_PASSWORD="${{ secrets.ENV1_PASSWORD }}" \
+            -e CYPRESS_ENV2_PASSWORD="${{ secrets.ENV2_PASSWORD }}" \
+            -v "${{ github.workspace }}/allure-report:/app/allure-report" \
+            cypress-allure:ci
+
+      # Step 4: Upload the generated Allure report
+      # After the workflow finishes, you can download the report from the "Actions" tab in GitHub
+      # Just click on your workflow run → scroll to the "Artifacts" section → download "allure-report"
+      - name: Upload Allure report as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: ./allure-report
+
+      # Step 5: Publish the Allure report to GitHub Pages (gh-pages branch)
+      # This allows others to view the test report as a hosted web page
+      - name: Publish Allure report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+          publish_branch: gh-pages

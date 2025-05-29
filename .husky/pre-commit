@@ -1,0 +1,13 @@
+# 🧹 Pre-commit Git hook
+# This hook runs automatically before each commit.
+# It uses `lint-staged` to:
+#   - Run ESLint with --fix on staged JavaScript files
+#   - Run Prettier to format staged files
+#
+# ✅ Only staged files are checked — this keeps commits fast.
+# ❌ It does NOT run full lint or format on the entire project.
+#
+# Configuration for lint-staged is defined in package.json under the "lint-staged" field.
+# If any command fails (linting or formatting), the commit will be blocked.
+
+npx lint-staged
