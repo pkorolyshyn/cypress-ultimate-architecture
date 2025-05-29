@@ -46,7 +46,7 @@ Instead of struggling to figure out "the best way," you’ll immediately benefit
 
 - 📊 **Allure Test Reporting**
   <br>Professional, interactive reports that make debugging easy (and your reports beautiful).
-  <br>[Explore Allure Report →](https://github.com/pkorolyshyn/cypress-ultimate-architecture/tree/main/cypress/pages)
+  <br>[Explore Allure Report →](https://pkorolyshyn.github.io/cypress-ultimate-architecture/)
 
 - 🌍 **Flexible Environment Handling**
   <br>Easily switch between testing environments—local, staging, production.
