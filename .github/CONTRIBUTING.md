@@ -20,6 +20,7 @@ Thanks for considering a contribution! 🚀
 ## Suggestions Welcome
 
 Feel free to open an issue if:
+
 - You have an idea for improvement
 - You found a bug or flaky test
 - You want to ask how to integrate something

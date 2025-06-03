@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/61518906/448611332-ccd592a3-2040-40ee-8881-4cffeb0e271d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250528%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250528T222906Z&X-Amz-Expires=300&X-Amz-Signature=88e358afc45a6ae5e1e9fc40ce2e992fca71cdd165e148c352323bd158c0531f&X-Amz-SignedHeaders=host">
+  <img src="https://raw.githubusercontent.com/pkorolyshyn/testing-env1/main/assets/cypress-ultimate-architecture.png">
   </p>
 <p align="center">
   <img src="https://img.shields.io/badge/cypress-14.3.3-brightgreen.svg">
@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/code_style-ESLint-4B32C3.svg">
   <img src="https://img.shields.io/badge/git_hooks-Husky-blue.svg">
   <img src="https://img.shields.io/badge/docker-supported-blue.svg?logo=docker">
-  <img src="![CI](https://github.com/pkorolyshyn/cypress-ultimate-architecture/actions/workflows/cypress-e2e.yml/badge.svg)">
+  <img src="https://github.com/pkorolyshyn/cypress-ultimate-architecture/actions/workflows/cypress-e2e.yml/badge.svg">
   <img src="https://img.shields.io/github/stars/pkorolyshyn/cypress-ultimate-architecture?style=social">
 </p>
 
@@ -563,21 +563,21 @@ hideXHRInCommandLog: true;
 - lint-staged (https://www.npmjs.com/package/lint-staged)
 
 ## 💛 Contributing
+
 Contributions are welcome! If you’d like to improve this framework, feel free to fork it, create a branch, and open a pull request.
 
 Some ideas you could help with:
 
-* Implement Allure history
+- Implement Allure history
 
-* Any advanced documentation
+- Any advanced documentation
 
-* Add more extensive tests for Dialog, Calendar, Echarts, Smart Table, or Auth
+- Add more extensive tests for Dialog, Calendar, Echarts, Smart Table, or Auth
 
-* Add MS Teams chat reporting integration
+- Add MS Teams chat reporting integration
 
-* Add more data-testid selectors to the E-commerce page: https://github.com/pkorolyshyn/testing-env1
-* Or anything you think will be suitable and useful
-
+- Add more data-testid selectors to the E-commerce page: https://github.com/pkorolyshyn/testing-env1
+- Or anything you think will be suitable and useful
 
 > **Note:** Please avoid writing `tests` for the E-commerce section — it is meant as a playground for users to try the framework and write their own tests.
 
