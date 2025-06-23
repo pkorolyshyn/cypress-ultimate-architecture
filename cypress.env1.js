@@ -8,9 +8,10 @@
 //
 // Similar configs exist for other environments (e.g., `cypress.env2.js`).
 
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 
-module.exports = {
+export default {
   baseUrl: 'https://pkorolyshyn.github.io/testing-env1/#',
   env: {
     email: 'env1_test@email.com',

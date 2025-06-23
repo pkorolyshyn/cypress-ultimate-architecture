@@ -1,9 +1,12 @@
-const { defineConfig } = require('cypress');
-const { allureCypress } = require('allure-cypress/reporter');
-const os = require('node:os');
+import { defineConfig } from 'cypress';
+import { createEsbuildPlugin } from '@badeball/cypress-cucumber-preprocessor/esbuild';
+import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
+import createBundler from '@bahmutov/cypress-esbuild-preprocessor';
+import allureWriter from '@shelex/cypress-allure-plugin/writer.js';
 
-module.exports = defineConfig({
+export default defineConfig({
   e2e: {
+    specPattern: 'cypress/features/**/*.feature',
     defaultCommandTimeout: 10000, // ⏱ Default timeout (in ms) for Cypress commands like `.get()` and `.click()` etc.
     hideXHRInCommandLog: false, // 🧹 When true, hides XHR requests from Cypress command log (controlled manually in e2e.js)
     retries: {
@@ -13,7 +16,7 @@ module.exports = defineConfig({
     reporterOptions: {
       outputDir: 'allure-results',
     },
-    setupNodeEvents(on, config) {
+    async setupNodeEvents(on, config) {
       // Determine which environment config to load when you launch Cypress (defaults to 'env1' if not set)
       // Example of usage:
       //   npx cypress open --env envName=env2
@@ -21,28 +24,23 @@ module.exports = defineConfig({
       const envName = config.env.envName || 'env1';
 
       // Load environment-specific values from a file like `cypress.env1.js`
-      const settings = require(`./cypress.${envName}.js`);
+      const settings = (await import(`./cypress.${envName}.js`)).default;
 
-      //  Inject baseUrl and env variables from selected env file
+      // Inject baseUrl and env variables from selected env file
       config.baseUrl = settings.baseUrl;
       config.env = {
         ...config.env,
         ...settings.env,
       };
 
+      // 🥒 Cucumber plugin setup
+      await addCucumberPreprocessorPlugin(on, config);
+      on('file:preprocessor', createBundler({ plugins: [createEsbuildPlugin(config)] }));
+
       // 📊 Configure Allure reporter with system and runtime metadata
-      allureCypress(on, config, {
-        resultsDir: 'allure-results',
-        environmentInfo: {
-          os_platform: os.platform(), // e.g. 'win32' or 'darwin'
-          os_release: os.release(), // e.g. '10.0.19045'
-          os_version: os.version(), // full OS version string
-          node_version: process.version, // Node.js version used
-          browser: config.browserName, // Browser name (e.g. chrome, edge)
-          browserVersion: config.browserVersion, // Browser version
-          env: envName, // Current test environment (e.g. 'env1')
-        },
-      });
+      config.env.allure = true;
+      config.env.allureReuseAfterSpec = true;
+      allureWriter(on, config);
 
       return config;
     },

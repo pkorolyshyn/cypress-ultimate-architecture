@@ -6,22 +6,24 @@
 // Instead of repeating multiple `allure.*()` calls inside each test,
 // you can simply instantiate this class and call `.apply()` with relevant metadata.
 //
-// ✅ Example usage inside a test:
+// ✅ Example usage in BDD tests (inside `allureMeta.hooks.js`):
 //
-//   new AllureMeta({
-//     feature: 'Login',
-//     story: 'Valid credentials allow user login',
-//     ticket: 'AUTH-123',
-//     tags: ['login', 'smoke'],
-//     severity: 'critical',
-//     epic: 'Authentication',
-//     owner: 'QA Automation',
-//   }).apply();
+//   // Add tag inside your .feature file
+//   // e.g., @CAL-102
+//
+//   // Then register metadata with a hook:
+//   Before({ tags: '@CAL-102' }, () => {
+//     new AllureMeta({
+//       feature: 'Calendar',
+//       story: 'Today cell is visually highlighted',
+//       ticket: 'CAL-102',
+//       tags: ['calendar'],
+//       severity: 'minor',
+//     }).apply();
+//   });
 //
 // This will attach all the defined metadata to the test in the Allure report.
 // Find more at: https://allurereport.org/docs/cypress/
-
-import * as allure from 'allure-js-commons';
 
 class AllureMeta {
   static baseJiraUrl = 'https://your-jira-url/browse/';
@@ -45,6 +47,8 @@ class AllureMeta {
   }
 
   apply() {
+    const allure = Cypress.Allure.reporter.getInterface();
+
     allure.epic(this.epic);
     allure.feature(this.feature);
     allure.story(this.story);
