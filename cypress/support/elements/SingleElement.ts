@@ -18,39 +18,41 @@
 // And many other ways this can help you 😊
 
 export default class SingleElement {
-  constructor(selector) {
+  private readonly selector: string;
+
+  constructor(selector: string) {
     this.selector = selector;
   }
 
-  get element() {
+  get element(): Cypress.Chainable<JQuery<HTMLElement>> {
     return cy.get(this.selector);
   }
 
-  shouldBeVisible() {
+  shouldBeVisible(): this {
     this.element.should('be.visible');
 
     return this;
   }
 
-  shouldNotExist() {
+  shouldNotExist(): this {
     this.element.should('not.exist');
 
     return this;
   }
 
-  shouldContainText(text) {
+  shouldContainText(text: string): this {
     this.element.should('contain.text', text);
 
     return this;
   }
 
-  click(isForce = false) {
+  click(isForce: boolean = false): this {
     this.element.click({ force: isForce });
 
     return this;
   }
 
-  shouldHaveCss(cssProperty, cssValue) {
+  shouldHaveCss(cssProperty: string, cssValue: string): this {
     this.element.should('have.css', cssProperty, cssValue);
 
     return this;
@@ -70,7 +72,9 @@ export default class SingleElement {
    * @example
    *   chart.pieCanvas.hoverByCoords(-20, 10); // hovers at a point inside the canvas
    */
-  hoverByCoords(x = 0, y = 0) {
+  hoverByCoords(x: number = 0, y: number = 0): this {
     this.element.realMouseMove(x, y, { position: 'center' });
+
+    return this;
   }
 }

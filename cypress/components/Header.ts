@@ -1,26 +1,29 @@
 // Header component represents the global application header.
-// It can be used in any page after the user is logged in.
 //
 // ✅ Example of usage:
 //
+//   // Inside ECommercePage.ts
 //   import Header from '../components/Header';
 //
-//   const header = new Header();
-//   header.logo.shouldBeVisible();
+//   class ECommercePage extends BasePage {
+//     public get header() {
+//       return new Header();
+//     }
+//   }
 
 import BaseComponent from '../core/BaseComponent';
 
 export default class Header extends BaseComponent {
-  selectors = {
+  private readonly selectors = {
     logo: "[data-testid='header-logo']",
     userPicture: '.user-picture',
-  };
+  } as const;
 
-  get logo() {
+  public get logo() {
     return this.select(this.selectors.logo);
   }
 
-  get userPicture() {
+  public get userPicture() {
     return this.select(this.selectors.userPicture);
   }
 }

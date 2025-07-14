@@ -16,15 +16,15 @@ import InputElement from '../support/elements/InputElement';
 import MultiElement from '../support/elements/MultiElement';
 
 export default class BaseObject {
-  select(selector) {
+  protected select(selector: string): SingleElement {
     return new SingleElement(selector);
   }
 
-  selectInput(selector) {
+  protected selectInput(selector: string): InputElement {
     return new InputElement(selector);
   }
 
-  selectAll(selector) {
+  protected selectAll(selector: string): MultiElement {
     return new MultiElement(selector);
   }
 }

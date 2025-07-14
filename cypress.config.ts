@@ -8,7 +8,7 @@ export default defineConfig({
   e2e: {
     specPattern: 'cypress/features/**/*.feature',
     defaultCommandTimeout: 10000, // ⏱ Default timeout (in ms) for Cypress commands like `.get()` and `.click()` etc.
-    hideXHRInCommandLog: false, // 🧹 When true, hides XHR requests from Cypress command log (controlled manually in e2e.js)
+    hideXHRInCommandLog: false, // 🧹 When true, hides XHR requests from Cypress command log (controlled manually in e2e.ts)
     retries: {
       runMode: 2, // for CI runs
       openMode: 0, // for local runs
@@ -20,11 +20,11 @@ export default defineConfig({
       // Determine which environment config to load when you launch Cypress (defaults to 'env1' if not set)
       // Example of usage:
       //   npx cypress open --env envName=env2
-      //   → Will load cypress.env2.js (URL, email, password, etc. come from there)
+      //   → Will load cypress.env2.ts (URL, email, password, etc. come from there)
       const envName = config.env.envName || 'env1';
 
-      // Load environment-specific values from a file like `cypress.env1.js`
-      const settings = (await import(`./cypress.${envName}.js`)).default;
+      // Load environment-specific values from a file like `cypress.env1.ts`
+      const settings = (await import(`./cypress.${envName}.ts`)).default;
 
       // Inject baseUrl and env variables from selected env file
       config.baseUrl = settings.baseUrl;

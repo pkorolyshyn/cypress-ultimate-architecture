@@ -3,14 +3,17 @@
 //
 //   npx cypress run --env envName=env2
 
+import { EnvConfig } from './cypress/support/types';
 import dotenv from 'dotenv';
 dotenv.config();
 
-export default {
+const settings: EnvConfig = {
   baseUrl: 'https://pkorolyshyn.github.io/testing-env2/#',
   env: {
     email: 'env2_test@email.com',
-    password: process.env.ENV2_PASSWORD,
+    password: process.env.ENV2_PASSWORD!,
     envName: 'env2',
   },
 };
+
+export default settings;

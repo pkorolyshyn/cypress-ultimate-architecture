@@ -1,10 +1,10 @@
-import smartTablePage from '../../pages/SmartTablePage.js';
-import tableData from '../../fixtures/tableData.js';
+import smartTablePage from '../../pages/SmartTablePage';
+import tableData from '../../fixtures/tableData';
 
 const { Given, Then } = require('@badeball/cypress-cucumber-preprocessor');
 
 Given('the user is on the Smart Table page', () => {
-  cy.visit(smartTablePage.url);
+  smartTablePage.visit();
 });
 
 Then('the first-name column should be displayed with correct names', () => {

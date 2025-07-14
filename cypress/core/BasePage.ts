@@ -5,7 +5,7 @@
 //   import BasePage from '../core/BasePage';
 //
 //   class LoginPage extends BasePage {
-//     url = '/auth/login';
+//     protected url = '/auth/login';
 //     ...
 //   }
 //
@@ -14,15 +14,10 @@
 
 import BaseObject from './BaseObject';
 
-export default class BasePage extends BaseObject {
-  constructor() {
-    super();
-    if (this.constructor === BasePage) {
-      throw new Error('BasePage is abstract. Extend it to use.');
-    }
-  }
+export default abstract class BasePage extends BaseObject {
+  protected abstract url: string;
 
-  visit() {
+  visit(): this {
     if (!this.url) throw new Error('Page URL is not defined.');
 
     cy.visit(this.url);

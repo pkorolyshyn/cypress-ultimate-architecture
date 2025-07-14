@@ -5,4 +5,4 @@
 
 import BaseObject from './BaseObject';
 
-export default class BaseComponent extends BaseObject {}
+export default abstract class BaseComponent extends BaseObject {}

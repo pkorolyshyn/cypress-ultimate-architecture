@@ -6,7 +6,7 @@
 //
 // How it works:
 // - All selectors are grouped under a single `selectors` object for clarity.
-// - Getters return custom element wrappers using helper methods from BasePage.SSS
+// - Getters return custom element wrappers using helper methods from BasePage.
 //
 // Example usage in a test:
 //   calendarPage.visit();
@@ -15,18 +15,18 @@
 import BasePage from '../core/BasePage';
 
 class CalendarPage extends BasePage {
-  url = '/pages/extra-components/calendar';
+  protected url = '/pages/extra-components/calendar';
 
-  selectors = {
+  private readonly selectors = {
     selectedDate: "[data-testid='selected-date']",
     todayCell: '.today',
-  };
+  } as const;
 
-  get selectedDate() {
+  public get selectedDate() {
     return this.select(this.selectors.selectedDate);
   }
 
-  get todayCell() {
+  public get todayCell() {
     return this.select(this.selectors.todayCell);
   }
 }

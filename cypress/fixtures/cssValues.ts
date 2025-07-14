@@ -12,7 +12,26 @@
 //
 // This makes visual testing scalable, especially when design tokens change across environments or themes.
 
-const cssValues = {
+type CSSValues = {
+  palette: {
+    danger: string;
+    success: string;
+    primary: string;
+    primaryGradient: string;
+  };
+  buttons: {
+    cancelBg: string;
+    submitBg: string;
+  };
+  alerts: {
+    errorText: string;
+  };
+  calendar: {
+    cellBg: string;
+  };
+};
+
+const cssValues: CSSValues = {
   palette: {
     danger: 'rgb(255, 61, 113)',
     success: 'rgb(0, 214, 143)',
@@ -20,14 +39,14 @@ const cssValues = {
     primaryGradient: 'linear-gradient(to right, rgb(51, 102, 255), rgb(39, 75, 219))',
   },
   buttons: {
-    cancelBg: null,
-    submitBg: null,
+    cancelBg: '',
+    submitBg: '',
   },
   alerts: {
-    errorText: null,
+    errorText: '',
   },
   calendar: {
-    cellBg: null,
+    cellBg: '',
   },
 };
 

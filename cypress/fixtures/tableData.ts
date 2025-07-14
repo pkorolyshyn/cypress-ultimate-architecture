@@ -6,7 +6,12 @@
 //
 // This approach keeps your tests clean, avoids duplication, and makes updates easier if the data changes.
 
-const tableData = {
+interface TableData {
+  readonly firstNames: readonly string[];
+  readonly headers: readonly string[];
+}
+
+const tableData: TableData = {
   firstNames: [
     'Mark',
     'Larry',
@@ -18,8 +23,8 @@ const tableData = {
     'Haik',
     'Garegin',
     'Francisca',
-  ],
-  headers: ['Actions', 'ID', 'First Name', 'Last Name', 'Username', 'E-mail', 'Age'],
+  ] as const,
+  headers: ['Actions', 'ID', 'First Name', 'Last Name', 'Username', 'E-mail', 'Age'] as const,
 };
 
 export default tableData;

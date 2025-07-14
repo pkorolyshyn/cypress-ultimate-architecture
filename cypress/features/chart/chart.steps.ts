@@ -1,9 +1,9 @@
-import chartPage from '../../pages/ChartPage.js';
+import chartPage from '../../pages/ChartPage';
 
 const { Given, When, Then } = require('@badeball/cypress-cucumber-preprocessor');
 
 Given('the user visits the Chart page', () => {
-  cy.visit(chartPage.url);
+  chartPage.visit();
 });
 
 When('the user hovers on the USA pie slice', () => {
@@ -24,7 +24,7 @@ When('the user hovers on the France pie slice', () => {
 // since hardcoding dynamic values in .feature files can make test data harder to maintain.
 // That said, it’s totally up to you and can be useful in specific situations.
 
-Then('the tooltip should contain {string} and {string}', (country, percentage) => {
+Then('the tooltip should contain {string} and {string}', (country: string, percentage: string) => {
   chartPage.pieChartTooltip
     .shouldBeVisible()
     .shouldContainText(country)

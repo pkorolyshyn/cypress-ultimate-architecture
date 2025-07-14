@@ -10,11 +10,10 @@
 import dayjs from 'dayjs';
 
 class DateUtils {
-  defaultFormat = 'MMM DD, YYYY';
+  private readonly defaultFormat = 'MMM DD, YYYY';
 
-  getCurrentDate = (format = this.defaultFormat) => dayjs().format(format);
+  public getCurrentDate = (format: string = this.defaultFormat) => dayjs().format(format);
 }
 
 const dateUtils = new DateUtils();
-
 export default dateUtils;

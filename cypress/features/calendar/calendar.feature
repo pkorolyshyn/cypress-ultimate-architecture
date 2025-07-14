@@ -1,5 +1,5 @@
 # Tags like @CAL-101 or @CAL-102 are used to connect this scenario with its metadata
-# defined in `support/allureMeta.hooks.js`. That’s where we assign Allure labels like feature,
+# defined in `support/allureMeta.hooks.ts`. That’s where we assign Allure labels like feature,
 # story, severity, and ticket info. The tag here triggers the matching `Before` hook.
 #
 # You can add more tags (like @smoke or @calendar) for filtering tests with Cypress grep,

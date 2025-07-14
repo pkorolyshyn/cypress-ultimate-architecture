@@ -4,7 +4,7 @@
 // Here's what it does:
 //
 // - Imports Cypress commands (unused in this framework, but still required by Cypress default structure)
-// - Registers Allure reporting via `@shelex/cypress-allure-plugin`
+// - Registers Allure reporting via `allure-cypress`
 // - Enables real DOM interactions with `cypress-real-events` (used for things like .realMouseMove)
 // - Adds support for test filtering using @cypress/grep (e.g., running only @smoke or @login tagged tests)
 
@@ -20,10 +20,10 @@ registerCypressGrep();
 // This helps keep the command log clean and focused on meaningful test actions.
 //
 // By default, `hideXHRInCommandLog` is set to false.
-// You can enable it by setting it to `true` in your cypress.config.js file
+// You can enable it by setting it to `true` in your cypress.config.ts file
 
-if (Cypress.config('hideXHRInCommandLog')) {
-  const app = window.top;
+if (Cypress.env('hideXHRInCommandLog')) {
+  const app = window.top as Window;
   const doc = app?.document;
 
   if (doc && !doc.head.querySelector('[data-hide-command-log-request]')) {

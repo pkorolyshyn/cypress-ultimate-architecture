@@ -1,7 +1,7 @@
 // ✅ ESLint Flat Config
 //
 // This configuration is designed to enforce clean, consistent, and professional code
-// across both general JavaScript files and Cypress test files.
+// across both general TypeScript files and Cypress test files.
 
 import prettierConfig from 'eslint-config-prettier';
 import cypressPlugin from 'eslint-plugin-cypress';
@@ -9,20 +9,27 @@ import prettierPlugin from 'eslint-plugin-prettier';
 
 /** @type {import('eslint').FlatConfig[]} */
 export default [
-  // Base JS files (Prettier + best practices)
+  // Base TS files (Prettier + best practices)
   {
-    files: ['**/*.js'], // Apply this block to all JS files in the project
+    files: ['**/*.ts'], // Apply this block to all TS files in the project
     languageOptions: {
       ecmaVersion: 'latest', // Enable modern ECMAScript syntax
       sourceType: 'module',
+      parser: await import('@typescript-eslint/parser'),
+      parserOptions: {
+        project: './tsconfig.json',
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
     plugins: {
+      '@typescript-eslint': (await import('@typescript-eslint/eslint-plugin')).default,
       prettier: prettierPlugin, // Enable Prettier plugin to enforce formatting
     },
     rules: {
       ...prettierConfig.rules, // Disable conflicting ESLint rules with Prettier
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/explicit-function-return-type': 'off',
       'prettier/prettier': 'error', // Report Prettier formatting issues as ESLint errors
-      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }], // Warn about unused variables
       'no-console': 'warn', // Warn on console.log usage (optional during dev)
       eqeqeq: ['error', 'always'], // Enforce use of === and !== instead of == and !=
 
@@ -43,7 +50,7 @@ export default [
 
   // Cypress-specific config
   {
-    files: ['cypress/**/*.js'],
+    files: ['cypress/**/*.ts'],
     plugins: {
       cypress: cypressPlugin, // Enable Cypress plugin to access custom rules
     },

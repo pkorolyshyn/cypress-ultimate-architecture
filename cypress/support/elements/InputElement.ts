@@ -5,13 +5,13 @@
 import SingleElement from './SingleElement';
 
 export default class InputElement extends SingleElement {
-  type(value, isLog = false) {
+  type(value: string, isLog = false): this {
     this.element.type(value, { log: isLog });
 
     return this;
   }
 
-  shouldHavePlaceholder(placeholderValue) {
+  shouldHavePlaceholder(placeholderValue: string): this {
     this.element.should('have.attr', 'placeholder', placeholderValue);
 
     return this;

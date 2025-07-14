@@ -1,14 +1,14 @@
 // AlertDialog component represents a reusable dialog UI element.
-// It is meant to be composed inside a Page Object (e.g., DialogPage.js).
+// It is meant to be composed inside a Page Object (e.g., DialogPage.ts).
 // This follows the principle of composition: page objects are composed of components.
 //
 // ✅ Example of usage inside a page object:
 //
-//   // Inside DialogPage.js
+//   // Inside DialogPage.ts
 //   import AlertDialog from '../components/AlertDialog';
 //
 //   class DialogPage {
-//     get alertDialog() {
+//     public get alertDialog() {
 //       return new AlertDialog();
 //     }
 //   }
@@ -19,21 +19,21 @@ import BaseComponent from '../core/BaseComponent';
 
 export default class AlertDialog extends BaseComponent {
   // Define all element selectors used within this dialog component
-  selectors = {
+  private readonly selectors = {
     title: "[data-testid='alert-title']",
     description: "[data-testid='alert-description']",
     dismissDialogBtn: "[data-testid='alert-dismiss-btn']",
-  };
+  } as const;
 
-  get title() {
+  public get title() {
     return this.select(this.selectors.title);
   }
 
-  get description() {
+  public get description() {
     return this.select(this.selectors.description);
   }
 
-  get dismissDialogBtn() {
+  public get dismissDialogBtn() {
     return this.select(this.selectors.dismissDialogBtn);
   }
 }

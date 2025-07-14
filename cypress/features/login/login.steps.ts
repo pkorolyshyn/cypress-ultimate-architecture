@@ -1,12 +1,12 @@
-import loginPage from '../../pages/LoginPage.js';
-import eCommercePage from '../../pages/ECommercePage.js';
-import cssValues from '../../fixtures/cssValues.js';
-import userData from '../../fixtures/userData.js';
+import loginPage from '../../pages/LoginPage';
+import eCommercePage from '../../pages/ECommercePage';
+import cssValues from '../../fixtures/cssValues';
+import userData from '../../fixtures/userData';
 
 const { Given, When, Then } = require('@badeball/cypress-cucumber-preprocessor');
 
 Given('the user is on the Login page', () => {
-  cy.visit(loginPage.url);
+  loginPage.visit();
 });
 
 When('the user logs in with valid credentials', () => {

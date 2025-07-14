@@ -84,7 +84,7 @@ jobs:
       # Step 5: Publish the Allure report to GitHub Pages (gh-pages branch)
       # This allows others to view the test report as a hosted web page
 
-      # Skipped for BDD version to not overwrite Allure report
+      # Skipped for BDD-TypeScript version to not overwrite Allure report
       # But this will work perfectly if you uncomment it
 
       # - name: Publish Allure report to GitHub Pages

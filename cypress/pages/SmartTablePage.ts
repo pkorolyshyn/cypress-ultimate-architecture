@@ -1,18 +1,18 @@
 import BasePage from '../core/BasePage';
 
 class SmartTablePage extends BasePage {
-  url = '/pages/tables/smart-table';
+  protected url = '/pages/tables/smart-table';
 
-  selectors = {
+  private readonly selectors = {
     tableHeaders: 'div.ng2-smart-title',
     firstNamesList: "[data-testid='first-name-cell']",
   };
 
-  get tableHeaders() {
+  public get tableHeaders() {
     return this.selectAll(this.selectors.tableHeaders);
   }
 
-  get firstNamesList() {
+  public get firstNamesList() {
     return this.selectAll(this.selectors.firstNamesList);
   }
 }

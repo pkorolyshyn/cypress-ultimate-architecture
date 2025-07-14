@@ -2,15 +2,17 @@
 // It allows you to perform bulk checks like verifying all elements are visible or match expected text values.
 
 export default class MultiElement {
-  constructor(selector) {
+  private readonly selector: string;
+
+  constructor(selector: string) {
     this.selector = selector;
   }
 
-  get elements() {
+  public get elements(): Cypress.Chainable<JQuery<HTMLElement>> {
     return cy.get(this.selector);
   }
 
-  shouldAllBeVisible() {
+  shouldAllBeVisible(): this {
     this.elements.each($el => {
       cy.wrap($el).should('be.visible');
     });
@@ -34,7 +36,7 @@ export default class MultiElement {
    * @param {string[]} expectedTexts - An array of expected text values to match against each element.
    * @returns {MultiElement}
    */
-  shouldHaveTexts(expectedTexts = []) {
+  public shouldHaveTexts(expectedTexts: readonly string[]): this {
     this.elements.each(($el, index) => {
       expect($el.text().trim()).to.eq(expectedTexts[index]);
     });

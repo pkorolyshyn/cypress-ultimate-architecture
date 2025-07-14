@@ -13,7 +13,9 @@ import BasePage from '../core/BasePage';
 import Header from '../components/Header';
 
 class ECommercePage extends BasePage {
-  get header() {
+  protected url = '/pages/dashboard';
+
+  public get header() {
     return new Header();
   }
 }

@@ -1,18 +1,18 @@
 import BasePage from '../core/BasePage';
 
 class ChartPage extends BasePage {
-  url = '/pages/charts/echarts';
+  protected url = '/pages/charts/echarts';
 
-  selectors = {
+  private readonly selectors = {
     pieChartCanvas: "[data-testid='pie-chart']",
     pieChartTooltip: `[data-testid='chart-tooltip']`,
-  };
+  } as const;
 
-  get pieChartCanvas() {
+  public get pieChartCanvas() {
     return this.select(this.selectors.pieChartCanvas);
   }
 
-  get pieChartTooltip() {
+  public get pieChartTooltip() {
     return this.select(this.selectors.pieChartTooltip);
   }
 }

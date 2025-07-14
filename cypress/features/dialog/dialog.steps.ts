@@ -1,11 +1,11 @@
-import dialogPage from '../../pages/DialogPage.js';
-import cssValues from '../../fixtures/cssValues.js';
-import userData from '../../fixtures/userData.js';
+import dialogPage from '../../pages/DialogPage';
+import cssValues from '../../fixtures/cssValues';
+import userData from '../../fixtures/userData';
 
 const { Given, When, Then } = require('@badeball/cypress-cucumber-preprocessor');
 
 Given('the user is on the Dialog page', () => {
-  cy.visit(dialogPage.url);
+  dialogPage.visit();
 });
 
 When('the user opens the alert dialog', () => {
