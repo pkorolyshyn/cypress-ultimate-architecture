@@ -4,8 +4,8 @@
   "description": "A complete, scalable Cypress testing framework showcasing best practices with Page Object Model, reusable element wrappers, step definitions, Allure reporting, ESLint + Prettier integration, Husky pre-commit hooks, environment configs, and clean CI-ready structure.",
   "scripts": {
     "prepare": "husky",
-    "lint": "eslint . --ext .js",
-    "lint:fix": "eslint . --ext .js --fix",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write ."
   },
   "repository": {
@@ -13,8 +13,13 @@
     "url": "https://github.com/your-username/cypress-ultimate-architecture.git"
   },
   "license": "MIT",
+  "type": "module",
   "devDependencies": {
     "@cypress/grep": "^4.1.0",
+    "@cypress/webpack-dev-server": "^4.1.0",
+    "@types/node": "^24.0.10",
+    "@typescript-eslint/eslint-plugin": "^8.35.1",
+    "@typescript-eslint/parser": "^8.35.1",
     "allure-cypress": "^3.2.1",
     "cypress": "^14.3.3",
     "cypress-real-events": "^1.14.0",
@@ -25,8 +30,10 @@
     "eslint-plugin-cypress": "^4.3.0",
     "eslint-plugin-prettier": "^5.4.0",
     "husky": "^9.1.7",
+    "jiti": "^2.4.2",
     "lint-staged": "^16.0.0",
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3"
   },
   "keywords": [
     "cypress",
@@ -49,7 +56,7 @@
     "cypress-best-practices"
   ],
   "lint-staged": {
-    "**/*.js": [
+    "**/*.ts": [
       "eslint --fix",
       "prettier --write"
     ]
