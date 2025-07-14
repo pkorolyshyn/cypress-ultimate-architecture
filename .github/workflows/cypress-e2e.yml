@@ -83,9 +83,13 @@ jobs:
 
       # Step 5: Publish the Allure report to GitHub Pages (gh-pages branch)
       # This allows others to view the test report as a hosted web page
-      - name: Publish Allure report to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./allure-report
-          publish_branch: gh-pages
+
+      # Skipped for TypeScript version to not overwrite Allure report
+      # But this will work perfectly if you uncomment it
+
+      # - name: Publish Allure report to GitHub Pages
+      #   uses: peaceiris/actions-gh-pages@v4
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./allure-report
+      #     publish_branch: gh-pages
