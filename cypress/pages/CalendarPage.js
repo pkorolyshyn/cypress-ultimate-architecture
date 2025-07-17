@@ -6,7 +6,7 @@
 //
 // How it works:
 // - All selectors are grouped under a single `selectors` object for clarity.
-// - Getters return custom element wrappers using helper methods from BasePage.SSS
+// - Getters return custom element wrappers using helper methods from BasePage.
 //
 // Example usage in a test:
 //   calendarPage.visit();

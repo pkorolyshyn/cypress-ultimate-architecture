@@ -3,10 +3,14 @@
 //
 // ✅ Example of usage:
 //
+//   // Inside ECommercePage.js
 //   import Header from '../components/Header';
 //
-//   const header = new Header();
-//   header.logo.shouldBeVisible();
+//   class ECommercePage extends BasePage {
+//     get header() {
+//       return new Header();
+//     }
+//   }
 
 import BaseComponent from '../core/BaseComponent';
 
