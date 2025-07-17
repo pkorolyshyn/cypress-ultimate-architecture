@@ -1,6 +1,6 @@
 {
   "name": "cypress-ultimate-architecture",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A complete, scalable Cypress testing framework showcasing best practices with Page Object Model, reusable element wrappers, step definitions, Allure reporting, ESLint + Prettier integration, Husky pre-commit hooks, environment configs, and clean CI-ready structure.",
   "scripts": {
     "prepare": "husky",
