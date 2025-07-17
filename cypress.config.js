@@ -38,8 +38,6 @@ export default defineConfig({
           os_release: os.release(), // e.g. '10.0.19045'
           os_version: os.version(), // full OS version string
           node_version: process.version, // Node.js version used
-          browser: config.browserName, // Browser name (e.g. chrome, edge)
-          browserVersion: config.browserVersion, // Browser version
           env: envName, // Current test environment (e.g. 'env1')
         },
       });
