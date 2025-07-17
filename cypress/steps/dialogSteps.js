@@ -4,7 +4,7 @@ import userData from '../fixtures/userData';
 
 const dialogSteps = {
   visitDialogPage() {
-    dialogPage.visit(dialogPage.url);
+    dialogPage.visit();
   },
 
   openAlertDialog() {

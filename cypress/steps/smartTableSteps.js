@@ -3,7 +3,7 @@ import tableData from '../fixtures/tableData';
 
 const smartTableSteps = {
   visitSmartTablePage() {
-    smartTablePage.visit(smartTablePage.url);
+    smartTablePage.visit();
   },
 
   verifyTableFirstNames() {

@@ -16,7 +16,7 @@ import cssValues from '../fixtures/cssValues';
 
 const calendarSteps = {
   visitCalendarPage() {
-    cy.visit(calendarPage.url);
+    calendarPage.visit();
   },
 
   verifyCurrentDateIsSelected() {

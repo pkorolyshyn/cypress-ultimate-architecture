@@ -13,6 +13,8 @@ import BasePage from '../core/BasePage';
 import Header from '../components/Header';
 
 class ECommercePage extends BasePage {
+  url = '/pages/dashboard';
+
   get header() {
     return new Header();
   }

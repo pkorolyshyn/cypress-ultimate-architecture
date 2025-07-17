@@ -2,7 +2,7 @@ import chartPage from '../pages/ChartPage';
 
 export const chartSteps = {
   visitChartPage() {
-    cy.visit(chartPage.url);
+    chartPage.visit();
   },
 
   hoverOverCountry(coords = {}) {

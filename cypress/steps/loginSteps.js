@@ -5,7 +5,7 @@ import userData from '../fixtures/userData';
 
 const loginSteps = {
   visitLoginPage() {
-    loginPage.visit(loginPage.url);
+    loginPage.visit();
   },
 
   login(email = Cypress.env('email'), password = Cypress.env('password')) {
