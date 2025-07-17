@@ -264,7 +264,7 @@ This project uses Allure to generate clean, interactive, and shareable test repo
 
 ```javascript
 import { allureCypress } from 'allure-cypress/reporter';
-const os = require('node:os');
+import os from 'node:os';
 
 export default {
   e2e: {
@@ -276,8 +276,6 @@ export default {
           os_release: os.release(),
           os_version: os.version(),
           node_version: process.version,
-          browser: config.browserName,
-          browserVersion: config.browserVersion,
           env: envName,
         },
       });
@@ -355,9 +353,10 @@ This framework supports running tests across multiple environments (e.g. dev, st
 
 ```js
 // cypress.myEnv.js
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 
-module.exports = {
+export default {
   baseUrl: 'https://your-environment-url.com',
   env: {
     email: 'your@email.com',

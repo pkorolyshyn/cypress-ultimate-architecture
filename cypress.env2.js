@@ -3,9 +3,10 @@
 //
 //   npx cypress run --env envName=env2
 
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 
-module.exports = {
+export default {
   baseUrl: 'https://pkorolyshyn.github.io/testing-env2/#',
   env: {
     email: 'env2_test@email.com',

@@ -1,8 +1,8 @@
-const { defineConfig } = require('cypress');
-const { allureCypress } = require('allure-cypress/reporter');
-const os = require('node:os');
+import { defineConfig } from 'cypress';
+import { allureCypress } from 'allure-cypress/reporter';
+import os from 'node:os';
 
-module.exports = defineConfig({
+export default defineConfig({
   e2e: {
     defaultCommandTimeout: 10000, // ⏱ Default timeout (in ms) for Cypress commands like `.get()` and `.click()` etc.
     hideXHRInCommandLog: false, // 🧹 When true, hides XHR requests from Cypress command log (controlled manually in e2e.js)
@@ -13,7 +13,7 @@ module.exports = defineConfig({
     reporterOptions: {
       outputDir: 'allure-results',
     },
-    setupNodeEvents(on, config) {
+    async setupNodeEvents(on, config) {
       // Determine which environment config to load when you launch Cypress (defaults to 'env1' if not set)
       // Example of usage:
       //   npx cypress open --env envName=env2
@@ -21,7 +21,7 @@ module.exports = defineConfig({
       const envName = config.env.envName || 'env1';
 
       // Load environment-specific values from a file like `cypress.env1.js`
-      const settings = require(`./cypress.${envName}.js`);
+      const settings = (await import(`./cypress.${envName}.js`)).default;
 
       //  Inject baseUrl and env variables from selected env file
       config.baseUrl = settings.baseUrl;
