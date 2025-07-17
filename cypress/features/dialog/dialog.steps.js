@@ -5,7 +5,7 @@ import userData from '../../fixtures/userData.js';
 const { Given, When, Then } = require('@badeball/cypress-cucumber-preprocessor');
 
 Given('the user is on the Dialog page', () => {
-  cy.visit(dialogPage.url);
+  dialogPage.visit();
 });
 
 When('the user opens the alert dialog', () => {

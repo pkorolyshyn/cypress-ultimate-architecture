@@ -72,5 +72,7 @@ export default class SingleElement {
    */
   hoverByCoords(x = 0, y = 0) {
     this.element.realMouseMove(x, y, { position: 'center' });
+
+    return this;
   }
 }

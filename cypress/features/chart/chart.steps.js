@@ -3,7 +3,7 @@ import chartPage from '../../pages/ChartPage.js';
 const { Given, When, Then } = require('@badeball/cypress-cucumber-preprocessor');
 
 Given('the user visits the Chart page', () => {
-  cy.visit(chartPage.url);
+  chartPage.visit();
 });
 
 When('the user hovers on the USA pie slice', () => {

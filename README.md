@@ -65,7 +65,7 @@ import userData from '../../fixtures/userData.js';
 const { Given, When, Then } = require('@badeball/cypress-cucumber-preprocessor');
 
 Given('the user is on the Login page', () => {
-  cy.visit(loginPage.url);
+  loginPage.visit();
 });
 
 When('the user logs in with valid credentials', () => {

@@ -10,7 +10,7 @@ import cssValues from '../../fixtures/cssValues';
 const { Given, Then } = require('@badeball/cypress-cucumber-preprocessor');
 
 Given('the user is on the Calendar page', () => {
-  cy.visit(calendarPage.url);
+  calendarPage.visit();
 });
 
 Then('the selected date should be today', () => {

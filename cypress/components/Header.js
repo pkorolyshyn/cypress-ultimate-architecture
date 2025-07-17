@@ -1,12 +1,15 @@
 // Header component represents the global application header.
-// It can be used in any page after the user is logged in.
 //
 // ✅ Example of usage:
 //
+//   // Inside ECommercePage.js
 //   import Header from '../components/Header';
 //
-//   const header = new Header();
-//   header.logo.shouldBeVisible();
+//   class ECommercePage extends BasePage {
+//     get header() {
+//       return new Header();
+//     }
+//   }
 
 import BaseComponent from '../core/BaseComponent';
 
