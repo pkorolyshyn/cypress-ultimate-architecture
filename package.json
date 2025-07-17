@@ -13,7 +13,7 @@
     "url": "https://github.com/your-username/cypress-ultimate-architecture.git"
   },
   "license": "MIT",
-    "type": "module",
+  "type": "module",
   "devDependencies": {
     "@cypress/grep": "^4.1.0",
     "allure-cypress": "^3.2.1",
